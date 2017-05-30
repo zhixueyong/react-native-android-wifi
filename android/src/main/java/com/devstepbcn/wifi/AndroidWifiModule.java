@@ -219,7 +219,7 @@ public class AndroidWifiModule extends ReactContextBaseJavaModule {
 	@ReactMethod
 	public void getMAC(final Callback callback) {
 		WifiInfo info = wifi.getConnectionInfo();
-		String stringmac=longToIP(info.getMacAddress());
+		String stringmac=info.getMacAddress();
 		callback.invoke(stringmac);
 	}
 
