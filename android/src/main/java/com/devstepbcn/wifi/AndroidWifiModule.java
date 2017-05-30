@@ -215,6 +215,13 @@ public class AndroidWifiModule extends ReactContextBaseJavaModule {
 		String stringip=longToIP(info.getIpAddress());
 		callback.invoke(stringip);
 	}
+	//This method will return current IP
+	@ReactMethod
+	public void getMAC(final Callback callback) {
+		WifiInfo info = wifi.getConnectionInfo();
+		String stringmac=longToIP(info.getMacAddress());
+		callback.invoke(stringmac);
+	}
 
 	public static String longToIP(int longIp){
 		StringBuffer sb = new StringBuffer("");
