@@ -263,7 +263,7 @@ public class AndroidWifiModule extends ReactContextBaseJavaModule {
 
 	@ReactMethod
 	public void enableAP(String name, String password) {
-		if(hotutil.setHotSpot("SSID","PASSWORD")){
+		if(hotutil.setHotSpot(name, password)){
 			Toast.makeText(getReactApplicationContext(), " SSID And PassWord Of Device HotSpot is Changed ", Toast.LENGTH_LONG).show();
 		}else{
 			Toast.makeText(getReactApplicationContext(), "SSID And PassWord Of Device HotSpot Not Chaged", Toast.LENGTH_LONG).show();
