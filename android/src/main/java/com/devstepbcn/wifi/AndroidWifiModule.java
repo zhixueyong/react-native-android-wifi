@@ -33,10 +33,13 @@ public class AndroidWifiModule extends ReactContextBaseJavaModule {
 	//WifiManager Instance
 	WifiManager wifi;
 
+	private wifiHotSpots hotutil;
+
 	//Constructor
 	public AndroidWifiModule(ReactApplicationContext reactContext) {
 		super(reactContext);
 		wifi = (WifiManager)reactContext.getSystemService(Context.WIFI_SERVICE);
+		this.hotutil = new wifiHotSpots(reactContext);
 	}
 
 	//Name for module register to use:
@@ -238,6 +241,36 @@ public class AndroidWifiModule extends ReactContextBaseJavaModule {
 		sb.append(".");
 		sb.append(strip[3]);
 		return sb.toString();
+	}
+
+	@ReactMethod
+	public void connectWifi(String ssid, String password) {
+		if(hotutil.startHotSpot(false)){
+			Toast.makeText(getReactApplicationContext(), " Device HotSpot is Turned Off", Toast.LENGTH_LONG).show();
+		}else{
+			Toast.makeText(getReactApplicationContext(), "Device HotSpot is Not Turned Off", Toast.LENGTH_LONG).show();
+		}
+
+		if(hotutil.connectToHotspot(ssid, password)){
+			Toast.makeText(getReactApplicationContext(), " Device is Connected to This HotSpot ", Toast.LENGTH_LONG).show();
+		}else{
+			Toast.makeText(getReactApplicationContext(), "Device is Not Connected to This HotSpot", Toast.LENGTH_LONG).show();
+		}
+	}
+
+	@ReactMethod
+	public void enableAP(String name, String password) {
+		if(hotutil.setHotSpot("SSID","PASSWORD")){
+			Toast.makeText(getReactApplicationContext(), " SSID And PassWord Of Device HotSpot is Changed ", Toast.LENGTH_LONG).show();
+		}else{
+			Toast.makeText(getReactApplicationContext(), "SSID And PassWord Of Device HotSpot Not Chaged", Toast.LENGTH_LONG).show();
+		}
+
+		if(hotutil.startHotSpot(true)){
+			Toast.makeText(getReactApplicationContext(), " Device HotSpot is Turned On", Toast.LENGTH_LONG).show();
+		}else{
+			Toast.makeText(getReactApplicationContext(), "Device HotSpot is Not Turned On", Toast.LENGTH_LONG).show();
+		}
 	}
 }
 
