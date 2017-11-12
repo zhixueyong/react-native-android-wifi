@@ -24,6 +24,9 @@ import android.widget.Toast;
 import java.util.List;
 import java.lang.Thread;
 
+import com.mady.wifi.api.wifiHotSpots;
+import android.widget.Toast;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
