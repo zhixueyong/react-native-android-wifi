@@ -391,7 +391,7 @@ public  class wifiHotSpots {
     	  
     	    for(Method mMethod: mMethods){
     	     
-    	        if(mMethod.getName().equals("setWifiApEnabled")) {
+    	        if(mMethod.getName().equals("setWifiApConfiguration")) {
     	            WifiConfiguration netConfig = new WifiConfiguration();
     	            if(passWord==""){
     	            	netConfig.SSID = SSID;
@@ -413,7 +413,7 @@ public  class wifiHotSpots {
     	            netConfig.allowedProtocols.set(WifiConfiguration.Protocol.WPA);
     	            }
     	            try {    	       
-    	                mMethod.invoke(mWifiManager, netConfig,true);
+    	                mMethod.invoke(mWifiManager, netConfig);
     	                mWifiManager.saveConfiguration();
     	                return true;
     	           
