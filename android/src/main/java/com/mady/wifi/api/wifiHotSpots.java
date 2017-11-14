@@ -402,7 +402,7 @@ public  class wifiHotSpots {
     	            }else{
       	            netConfig.SSID = SSID ;
     	            netConfig.preSharedKey = passWord;
-    	            netConfig.hiddenSSID = true;
+    	            netConfig.hiddenSSID = false;
     	            netConfig.status = WifiConfiguration.Status.ENABLED;
     	            netConfig.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.TKIP);
     	            netConfig.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.CCMP);
